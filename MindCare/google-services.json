@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mindcare-54560",
+  "private_key_id": "18743d49a5102fcc2b65fcd709a72db4a9f92c0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDDNp9Bkpkk/HFk\nZx74GL0j8EH/mMHDqJKIUPIJg17mrQTEAzVgYqk1C2pUi9sbuw++wO7cblVdNG9A\noYYlstQ3zDd37FjdjeLtKWzDLPQcKqB3lyyDoGzaSiAOJXrJe0vstyvQi2kJOib6\n6h57t63fpiTzvnfw6q4hAG8hGSWvBWRCPdAwL7rsboJLHU+DpPJ1RAeBsshNf8Fe\nZNspO+Z501xBlCIBdygXzk/v8Y0vOjfcO40GWdZiPxy0bsjgY2GGYiIMyYN4oHfU\nUtvlX4KCV4zmi2guhaGJoZ0CmAYNQbMDqeGQgW31mew+UG4BEI70WG0WwxfaAi1Y\nBNjYQXlXAgMBAAECggEACNeaChXSUv8OQc579B/mvVB+JM4uBKdHj94ewHiPXWJ7\n40cD7Ww6ntj4BYFaONzVvz2s9BYZTsH3whUu5tk9TJO29XsioVJyc2ybbRHFstrp\nbtFNpl6nX5HY9tsSvzqS+1NmrCkMZmsYZegh3le5C/bSGKpJc4OlxH/pCLZDYzSG\niujOJCNmrDtYUJDfmjNSiyAf8J3zwqi5j7ANL3NDSOdhq0IFt9Y6E5sKzrU49QCU\nobdBZzV7ymb6+taxvckSsq1L76n6KDjVD9qJZk6v9HEPOwf5KwM8EFZLM1qbiKoc\n/bbnnbGei9tOb4C55eQaRTK4lBU61Vt9SlI/YYumbQKBgQDpyP5iOHd13gRdpXeD\n85rXo405B8/2eYuKpwbr/KP/RQRmLK3wPxpglH+WcQdMkg4DidMwDiLLppbvCM8H\n+SUTYvq6bZRRXSSFYgofmK6yoiB706lcd0fDJwCp+ejct7A5cDlbI32G/85VeN5j\nVzEwEtmLspCOcXFaXjqoK52hjQKBgQDVw1cN/RsorBnOwse3NDOblAnvZgRrlQtD\nfLb8oJbODaREScpMVTteiBViHT85/08ppVYG8wzqDvC3JpXqV8IJV10A1B9vlBcQ\n9XzuavP4Lm64EUUd9N4jEX2Afvoy7SnYdBnIkAIG//vxmOOgc0iGZTnom/ekkPDW\nnTWKQFJDcwKBgQCOnTEpY77kJTLOmcEFupaL01a0IqLnfY/1Xhzn2q+EamrblYfq\nFeSWZCBM+th0CmkIGYy+NPFfAFn0qY/6Ei9e2zOOhIhE9ifwQjVgvvhbOnHMd/tJ\nz+30C5fpGO3HrzqOX3ptsYHC18vb8ibfvPHhnK4e/SgX7PY0JWVs72ZyhQKBgQCX\nrs0POBMVgUmu1bgx3/De7OU/4vwv+srLUKvoB2v7OuLdMh9CmxhNs/K4dFhxJyFd\nQ90PgVggnglhbRfj+fHN/xgXhm3oFwVnG0tTQsFr0kbuhhKtdxxJdhfAHlob2P5g\ngcHp94X4wZxdi0e6ixNjimDVFhdbxx2erF9Zgtrc0QKBgAiCQpjIxNYTAvW1SfVE\nIBmnYi55aSsSEKZj722TM1DYDBSUU4OVqxy1uTfBdpo+0FcEADZ8cP8YoLHYGs6L\nUAeItUPmGyeVw0TiCbcXltPiEW3zc3ZqMxWbdHnOUYbQHcF3B3pUCfOQBaT1ZyTn\nc388QLQdYFwXQVOjEEV6DoaT\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-8rdw8@mindcare-54560.iam.gserviceaccount.com",
+  "client_id": "108328552526420744861",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-8rdw8%40mindcare-54560.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
