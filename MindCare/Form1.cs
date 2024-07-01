@@ -122,7 +122,6 @@ namespace MindCare
         //Diseño de inicialización de form1
         private void disenyoApp()
         {
-            this.MaximizeBox = false;
             this.MinimizeBox = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.StartPosition = FormStartPosition.CenterScreen;
