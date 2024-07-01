@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelPrincipal = new Panel();
             splitContainerPrincipal = new SplitContainer();
             functionPanel = new Panel();
@@ -970,7 +973,7 @@
             tabPageHistorialPacientes.Padding = new Padding(3);
             tabPageHistorialPacientes.Size = new Size(1295, 608);
             tabPageHistorialPacientes.TabIndex = 1;
-            tabPageHistorialPacientes.Text = "tabPage3";
+            tabPageHistorialPacientes.Text = "Historial de pacientes";
             tabPageHistorialPacientes.UseVisualStyleBackColor = true;
             // 
             // panel23
@@ -984,12 +987,37 @@
             // 
             // dataGridViewHistorialPaciente
             // 
+            dataGridViewHistorialPaciente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewHistorialPaciente.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewHistorialPaciente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewHistorialPaciente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewHistorialPaciente.Columns.AddRange(new DataGridViewColumn[] { LicenciaProfesionalActual, NIF, MotivoConsulta, TomaMedicamentos, ObersvacionesTerapeuta, DuracionSesion, ResumenSesion, ConsentimientoInformativo });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewHistorialPaciente.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewHistorialPaciente.Dock = DockStyle.Fill;
             dataGridViewHistorialPaciente.Location = new Point(0, 0);
             dataGridViewHistorialPaciente.Name = "dataGridViewHistorialPaciente";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewHistorialPaciente.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewHistorialPaciente.Size = new Size(1264, 602);
             dataGridViewHistorialPaciente.TabIndex = 0;
             // 

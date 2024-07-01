@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnCancelar = new Button();
             btnAceptar = new Button();
@@ -95,11 +97,28 @@
             // dataGridViewResultados
             // 
             dataGridViewResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewResultados.BackgroundColor = Color.Gainsboro;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewResultados.Columns.AddRange(new DataGridViewColumn[] { NIF, Nombre, Apellidos, Edad, Correo });
             dataGridViewResultados.Dock = DockStyle.Fill;
             dataGridViewResultados.Location = new Point(0, 0);
             dataGridViewResultados.Name = "dataGridViewResultados";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewResultados.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewResultados.Size = new Size(800, 390);
             dataGridViewResultados.TabIndex = 0;
             dataGridViewResultados.CellDoubleClick += dataGridViewResultados_CellDoubleClick;
