@@ -298,6 +298,7 @@
             btnInfoApp = new ToolStripButton();
             toolStripSeparator15 = new ToolStripSeparator();
             btnCerrarSesion = new ToolStripButton();
+            toolStripSeparator17 = new ToolStripSeparator();
             panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerPrincipal).BeginInit();
             splitContainerPrincipal.Panel1.SuspendLayout();
@@ -754,7 +755,7 @@
             textBoxTelefono2.Multiline = true;
             textBoxTelefono2.Name = "textBoxTelefono2";
             textBoxTelefono2.Size = new Size(213, 28);
-            textBoxTelefono2.TabIndex = 21;
+            textBoxTelefono2.TabIndex = 11;
             // 
             // textBoxTelefono
             // 
@@ -765,7 +766,7 @@
             textBoxTelefono.Multiline = true;
             textBoxTelefono.Name = "textBoxTelefono";
             textBoxTelefono.Size = new Size(213, 28);
-            textBoxTelefono.TabIndex = 20;
+            textBoxTelefono.TabIndex = 10;
             // 
             // textBoxEmail
             // 
@@ -776,7 +777,7 @@
             textBoxEmail.Multiline = true;
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(346, 28);
-            textBoxEmail.TabIndex = 19;
+            textBoxEmail.TabIndex = 9;
             // 
             // textBoxPais
             // 
@@ -787,7 +788,7 @@
             textBoxPais.Multiline = true;
             textBoxPais.Name = "textBoxPais";
             textBoxPais.Size = new Size(213, 28);
-            textBoxPais.TabIndex = 18;
+            textBoxPais.TabIndex = 8;
             // 
             // textBoxProvincia
             // 
@@ -798,7 +799,7 @@
             textBoxProvincia.Multiline = true;
             textBoxProvincia.Name = "textBoxProvincia";
             textBoxProvincia.Size = new Size(314, 28);
-            textBoxProvincia.TabIndex = 17;
+            textBoxProvincia.TabIndex = 7;
             // 
             // textBoxPoblacion
             // 
@@ -809,7 +810,7 @@
             textBoxPoblacion.Multiline = true;
             textBoxPoblacion.Name = "textBoxPoblacion";
             textBoxPoblacion.Size = new Size(333, 28);
-            textBoxPoblacion.TabIndex = 16;
+            textBoxPoblacion.TabIndex = 6;
             // 
             // textBoxDireccion
             // 
@@ -820,7 +821,7 @@
             textBoxDireccion.Multiline = true;
             textBoxDireccion.Name = "textBoxDireccion";
             textBoxDireccion.Size = new Size(554, 28);
-            textBoxDireccion.TabIndex = 15;
+            textBoxDireccion.TabIndex = 5;
             // 
             // textBoxEdad
             // 
@@ -830,7 +831,7 @@
             textBoxEdad.Multiline = true;
             textBoxEdad.Name = "textBoxEdad";
             textBoxEdad.Size = new Size(82, 28);
-            textBoxEdad.TabIndex = 14;
+            textBoxEdad.TabIndex = 4;
             // 
             // textBoxNombre
             // 
@@ -841,7 +842,7 @@
             textBoxNombre.Multiline = true;
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(252, 28);
-            textBoxNombre.TabIndex = 13;
+            textBoxNombre.TabIndex = 3;
             // 
             // label3
             // 
@@ -872,7 +873,7 @@
             textBoxApellidos.Multiline = true;
             textBoxApellidos.Name = "textBoxApellidos";
             textBoxApellidos.Size = new Size(377, 28);
-            textBoxApellidos.TabIndex = 3;
+            textBoxApellidos.TabIndex = 2;
             // 
             // label10
             // 
@@ -1235,6 +1236,7 @@
             btnLimpiarCamposPacientes.Name = "btnLimpiarCamposPacientes";
             btnLimpiarCamposPacientes.Size = new Size(23, 22);
             btnLimpiarCamposPacientes.Text = "toolStripButton11";
+            btnLimpiarCamposPacientes.Click += btnLimpiarCamposPacientes_Click;
             // 
             // toolStripSeparator5
             // 
@@ -1357,7 +1359,7 @@
             textBoxObservacionesPsicologo.Multiline = true;
             textBoxObservacionesPsicologo.Name = "textBoxObservacionesPsicologo";
             textBoxObservacionesPsicologo.Size = new Size(1147, 85);
-            textBoxObservacionesPsicologo.TabIndex = 53;
+            textBoxObservacionesPsicologo.TabIndex = 45;
             // 
             // label42
             // 
@@ -1389,7 +1391,7 @@
             textBoxDirConsPsicologo.Multiline = true;
             textBoxDirConsPsicologo.Name = "textBoxDirConsPsicologo";
             textBoxDirConsPsicologo.Size = new Size(529, 28);
-            textBoxDirConsPsicologo.TabIndex = 52;
+            textBoxDirConsPsicologo.TabIndex = 44;
             // 
             // label40
             // 
@@ -1421,7 +1423,7 @@
             textBoxEspecialidadPsicologo.Multiline = true;
             textBoxEspecialidadPsicologo.Name = "textBoxEspecialidadPsicologo";
             textBoxEspecialidadPsicologo.Size = new Size(319, 28);
-            textBoxEspecialidadPsicologo.TabIndex = 51;
+            textBoxEspecialidadPsicologo.TabIndex = 43;
             // 
             // label38
             // 
@@ -1453,7 +1455,7 @@
             textBoxPrecioPsicologo.Multiline = true;
             textBoxPrecioPsicologo.Name = "textBoxPrecioPsicologo";
             textBoxPrecioPsicologo.Size = new Size(223, 28);
-            textBoxPrecioPsicologo.TabIndex = 50;
+            textBoxPrecioPsicologo.TabIndex = 42;
             // 
             // label36
             // 
@@ -1484,7 +1486,7 @@
             textBoxLicenciaPsicologo.Multiline = true;
             textBoxLicenciaPsicologo.Name = "textBoxLicenciaPsicologo";
             textBoxLicenciaPsicologo.Size = new Size(341, 28);
-            textBoxLicenciaPsicologo.TabIndex = 40;
+            textBoxLicenciaPsicologo.TabIndex = 30;
             textBoxLicenciaPsicologo.TextChanged += textBoxLicenciaPsicologo_TextChanged;
             // 
             // label32
@@ -1527,7 +1529,7 @@
             textBoxDireccionPsicologo.Multiline = true;
             textBoxDireccionPsicologo.Name = "textBoxDireccionPsicologo";
             textBoxDireccionPsicologo.Size = new Size(508, 28);
-            textBoxDireccionPsicologo.TabIndex = 36;
+            textBoxDireccionPsicologo.TabIndex = 38;
             // 
             // labelEdadPsicologo
             // 
@@ -1549,7 +1551,7 @@
             textBoxEdadPsicologo.Multiline = true;
             textBoxEdadPsicologo.Name = "textBoxEdadPsicologo";
             textBoxEdadPsicologo.Size = new Size(157, 28);
-            textBoxEdadPsicologo.TabIndex = 44;
+            textBoxEdadPsicologo.TabIndex = 34;
             // 
             // label2
             // 
@@ -1613,7 +1615,7 @@
             textBoxNIFPsicologo.Multiline = true;
             textBoxNIFPsicologo.Name = "textBoxNIFPsicologo";
             textBoxNIFPsicologo.Size = new Size(341, 28);
-            textBoxNIFPsicologo.TabIndex = 41;
+            textBoxNIFPsicologo.TabIndex = 31;
             // 
             // labelPaisPsicologo
             // 
@@ -1656,7 +1658,7 @@
             textBoxApellidosPsicologo.Multiline = true;
             textBoxApellidosPsicologo.Name = "textBoxApellidosPsicologo";
             textBoxApellidosPsicologo.Size = new Size(341, 28);
-            textBoxApellidosPsicologo.TabIndex = 42;
+            textBoxApellidosPsicologo.TabIndex = 32;
             // 
             // labelPoblacionPsicologo
             // 
@@ -1750,7 +1752,7 @@
             textBoxTelefono2Psicologo.Multiline = true;
             textBoxTelefono2Psicologo.Name = "textBoxTelefono2Psicologo";
             textBoxTelefono2Psicologo.Size = new Size(213, 28);
-            textBoxTelefono2Psicologo.TabIndex = 49;
+            textBoxTelefono2Psicologo.TabIndex = 41;
             // 
             // label27
             // 
@@ -1771,7 +1773,7 @@
             textBoxTelefono1Psicologo.Multiline = true;
             textBoxTelefono1Psicologo.Name = "textBoxTelefono1Psicologo";
             textBoxTelefono1Psicologo.Size = new Size(213, 28);
-            textBoxTelefono1Psicologo.TabIndex = 48;
+            textBoxTelefono1Psicologo.TabIndex = 40;
             // 
             // label26
             // 
@@ -1792,7 +1794,7 @@
             textBoxEmailPsicologo.Multiline = true;
             textBoxEmailPsicologo.Name = "textBoxEmailPsicologo";
             textBoxEmailPsicologo.Size = new Size(492, 28);
-            textBoxEmailPsicologo.TabIndex = 19;
+            textBoxEmailPsicologo.TabIndex = 39;
             // 
             // label25
             // 
@@ -1813,7 +1815,7 @@
             textBoxPaisPsicologo.Multiline = true;
             textBoxPaisPsicologo.Name = "textBoxPaisPsicologo";
             textBoxPaisPsicologo.Size = new Size(210, 28);
-            textBoxPaisPsicologo.TabIndex = 45;
+            textBoxPaisPsicologo.TabIndex = 35;
             // 
             // textBoxNombrePsicologo
             // 
@@ -1824,7 +1826,7 @@
             textBoxNombrePsicologo.Multiline = true;
             textBoxNombrePsicologo.Name = "textBoxNombrePsicologo";
             textBoxNombrePsicologo.Size = new Size(406, 28);
-            textBoxNombrePsicologo.TabIndex = 43;
+            textBoxNombrePsicologo.TabIndex = 33;
             // 
             // textBoxProvinciaPsicologo
             // 
@@ -1835,7 +1837,7 @@
             textBoxProvinciaPsicologo.Multiline = true;
             textBoxProvinciaPsicologo.Name = "textBoxProvinciaPsicologo";
             textBoxProvinciaPsicologo.Size = new Size(406, 28);
-            textBoxProvinciaPsicologo.TabIndex = 46;
+            textBoxProvinciaPsicologo.TabIndex = 36;
             // 
             // textBoxPoblacionPsicologo
             // 
@@ -1846,7 +1848,7 @@
             textBoxPoblacionPsicologo.Multiline = true;
             textBoxPoblacionPsicologo.Name = "textBoxPoblacionPsicologo";
             textBoxPoblacionPsicologo.Size = new Size(239, 28);
-            textBoxPoblacionPsicologo.TabIndex = 47;
+            textBoxPoblacionPsicologo.TabIndex = 37;
             // 
             // panel4
             // 
@@ -1862,7 +1864,7 @@
             toolStrip1.AutoSize = false;
             toolStrip1.BackColor = Color.LightSteelBlue;
             toolStrip1.Dock = DockStyle.Fill;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnCerrarPagePsicologos, toolStripSeparator6, btnCrearPsicologo, btnModificarPsicologo, btnGuardarPsicologo, btnCancelarPsicologo, btnEliminarPsicologo, toolStripSeparator7, btnBuscarPsicologo, btnLimpiarCamposPsicologo, toolStripSeparator8, btnReportesPsicologo });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnCerrarPagePsicologos, toolStripSeparator6, btnCrearPsicologo, btnModificarPsicologo, btnGuardarPsicologo, btnCancelarPsicologo, btnEliminarPsicologo, toolStripSeparator7, btnBuscarPsicologo, toolStripSeparator17, btnLimpiarCamposPsicologo, toolStripSeparator8, btnReportesPsicologo });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1303, 25);
@@ -1964,6 +1966,7 @@
             btnLimpiarCamposPsicologo.Name = "btnLimpiarCamposPsicologo";
             btnLimpiarCamposPsicologo.Size = new Size(23, 22);
             btnLimpiarCamposPsicologo.Text = "Limpiar campos";
+            btnLimpiarCamposPsicologo.Click += btnLimpiarCamposPsicologo_Click;
             // 
             // toolStripSeparator8
             // 
@@ -2267,7 +2270,6 @@
             txtMessage.Name = "txtMessage";
             txtMessage.Size = new Size(959, 40);
             txtMessage.TabIndex = 0;
-            txtMessage.Enter += btnSend_Click;
             txtMessage.KeyPress += txtMessage_KeyPress;
             // 
             // panel12
@@ -2435,7 +2437,7 @@
             textBoxObservacionesPsiquiatra.Multiline = true;
             textBoxObservacionesPsiquiatra.Name = "textBoxObservacionesPsiquiatra";
             textBoxObservacionesPsiquiatra.Size = new Size(1147, 85);
-            textBoxObservacionesPsiquiatra.TabIndex = 53;
+            textBoxObservacionesPsiquiatra.TabIndex = 65;
             // 
             // label15
             // 
@@ -2467,7 +2469,7 @@
             textBoxDireccionConsultorioPsiquiatra.Multiline = true;
             textBoxDireccionConsultorioPsiquiatra.Name = "textBoxDireccionConsultorioPsiquiatra";
             textBoxDireccionConsultorioPsiquiatra.Size = new Size(529, 28);
-            textBoxDireccionConsultorioPsiquiatra.TabIndex = 52;
+            textBoxDireccionConsultorioPsiquiatra.TabIndex = 64;
             // 
             // label17
             // 
@@ -2499,7 +2501,7 @@
             textBoxEspecialidadPsiquiatra.Multiline = true;
             textBoxEspecialidadPsiquiatra.Name = "textBoxEspecialidadPsiquiatra";
             textBoxEspecialidadPsiquiatra.Size = new Size(319, 28);
-            textBoxEspecialidadPsiquiatra.TabIndex = 51;
+            textBoxEspecialidadPsiquiatra.TabIndex = 63;
             // 
             // label19
             // 
@@ -2531,7 +2533,7 @@
             textBoxPrecioSesionPsiquiatra.Multiline = true;
             textBoxPrecioSesionPsiquiatra.Name = "textBoxPrecioSesionPsiquiatra";
             textBoxPrecioSesionPsiquiatra.Size = new Size(223, 28);
-            textBoxPrecioSesionPsiquiatra.TabIndex = 50;
+            textBoxPrecioSesionPsiquiatra.TabIndex = 62;
             // 
             // label22
             // 
@@ -2562,7 +2564,7 @@
             textBoxLicenciaPsiquiatra.Multiline = true;
             textBoxLicenciaPsiquiatra.Name = "textBoxLicenciaPsiquiatra";
             textBoxLicenciaPsiquiatra.Size = new Size(341, 28);
-            textBoxLicenciaPsiquiatra.TabIndex = 40;
+            textBoxLicenciaPsiquiatra.TabIndex = 50;
             textBoxLicenciaPsiquiatra.TextChanged += textBoxLicenciaPsiquiatra_TextChanged;
             // 
             // label30
@@ -2605,7 +2607,7 @@
             textBoxDireccionPsiquiatra.Multiline = true;
             textBoxDireccionPsiquiatra.Name = "textBoxDireccionPsiquiatra";
             textBoxDireccionPsiquiatra.Size = new Size(508, 28);
-            textBoxDireccionPsiquiatra.TabIndex = 36;
+            textBoxDireccionPsiquiatra.TabIndex = 58;
             // 
             // labelEdadPsiquiatra
             // 
@@ -2627,7 +2629,7 @@
             textBoxEdadPsiquiatra.Multiline = true;
             textBoxEdadPsiquiatra.Name = "textBoxEdadPsiquiatra";
             textBoxEdadPsiquiatra.Size = new Size(157, 28);
-            textBoxEdadPsiquiatra.TabIndex = 44;
+            textBoxEdadPsiquiatra.TabIndex = 54;
             // 
             // label41
             // 
@@ -2691,7 +2693,7 @@
             textBoxNIFPsiquiatra.Multiline = true;
             textBoxNIFPsiquiatra.Name = "textBoxNIFPsiquiatra";
             textBoxNIFPsiquiatra.Size = new Size(341, 28);
-            textBoxNIFPsiquiatra.TabIndex = 41;
+            textBoxNIFPsiquiatra.TabIndex = 51;
             // 
             // labelPaisPsiquiatra
             // 
@@ -2734,7 +2736,7 @@
             textBoxApellidosPsiquiatra.Multiline = true;
             textBoxApellidosPsiquiatra.Name = "textBoxApellidosPsiquiatra";
             textBoxApellidosPsiquiatra.Size = new Size(341, 28);
-            textBoxApellidosPsiquiatra.TabIndex = 42;
+            textBoxApellidosPsiquiatra.TabIndex = 52;
             // 
             // labelPoblacionPsiquiatra
             // 
@@ -2828,7 +2830,7 @@
             textBoxTelefono2Psiquiatra.Multiline = true;
             textBoxTelefono2Psiquiatra.Name = "textBoxTelefono2Psiquiatra";
             textBoxTelefono2Psiquiatra.Size = new Size(213, 28);
-            textBoxTelefono2Psiquiatra.TabIndex = 49;
+            textBoxTelefono2Psiquiatra.TabIndex = 61;
             // 
             // label59
             // 
@@ -2849,7 +2851,7 @@
             textBoxTelefono1Psiquiatra.Multiline = true;
             textBoxTelefono1Psiquiatra.Name = "textBoxTelefono1Psiquiatra";
             textBoxTelefono1Psiquiatra.Size = new Size(213, 28);
-            textBoxTelefono1Psiquiatra.TabIndex = 48;
+            textBoxTelefono1Psiquiatra.TabIndex = 60;
             // 
             // label60
             // 
@@ -2870,7 +2872,7 @@
             textBoxEmailPsiquiatra.Multiline = true;
             textBoxEmailPsiquiatra.Name = "textBoxEmailPsiquiatra";
             textBoxEmailPsiquiatra.Size = new Size(492, 28);
-            textBoxEmailPsiquiatra.TabIndex = 19;
+            textBoxEmailPsiquiatra.TabIndex = 59;
             // 
             // label61
             // 
@@ -2891,7 +2893,7 @@
             textBoxPaisPsiquiatra.Multiline = true;
             textBoxPaisPsiquiatra.Name = "textBoxPaisPsiquiatra";
             textBoxPaisPsiquiatra.Size = new Size(210, 28);
-            textBoxPaisPsiquiatra.TabIndex = 45;
+            textBoxPaisPsiquiatra.TabIndex = 55;
             // 
             // textBoxNombrePsiquiatra
             // 
@@ -2902,7 +2904,7 @@
             textBoxNombrePsiquiatra.Multiline = true;
             textBoxNombrePsiquiatra.Name = "textBoxNombrePsiquiatra";
             textBoxNombrePsiquiatra.Size = new Size(406, 28);
-            textBoxNombrePsiquiatra.TabIndex = 43;
+            textBoxNombrePsiquiatra.TabIndex = 53;
             // 
             // textBoxProvinciaPsiquiatra
             // 
@@ -2913,7 +2915,7 @@
             textBoxProvinciaPsiquiatra.Multiline = true;
             textBoxProvinciaPsiquiatra.Name = "textBoxProvinciaPsiquiatra";
             textBoxProvinciaPsiquiatra.Size = new Size(406, 28);
-            textBoxProvinciaPsiquiatra.TabIndex = 46;
+            textBoxProvinciaPsiquiatra.TabIndex = 56;
             // 
             // textBoxPoblacionPsiquiatra
             // 
@@ -2924,7 +2926,7 @@
             textBoxPoblacionPsiquiatra.Multiline = true;
             textBoxPoblacionPsiquiatra.Name = "textBoxPoblacionPsiquiatra";
             textBoxPoblacionPsiquiatra.Size = new Size(239, 28);
-            textBoxPoblacionPsiquiatra.TabIndex = 47;
+            textBoxPoblacionPsiquiatra.TabIndex = 57;
             // 
             // tabPage2
             // 
@@ -3064,6 +3066,7 @@
             btnLimpiarCamposPsiquiatra.Size = new Size(23, 22);
             btnLimpiarCamposPsiquiatra.Tag = "Limpiar";
             btnLimpiarCamposPsiquiatra.Text = "Limpiar campos";
+            btnLimpiarCamposPsiquiatra.Click += btnLimpiarCamposPsiquiatra_Click;
             // 
             // toolStripSeparator14
             // 
@@ -3237,6 +3240,11 @@
             btnCerrarSesion.Tag = "Cerrar sesión";
             btnCerrarSesion.Text = "Cerrar sesión";
             btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
+            // toolStripSeparator17
+            // 
+            toolStripSeparator17.Name = "toolStripSeparator17";
+            toolStripSeparator17.Size = new Size(6, 25);
             // 
             // Form1
             // 
@@ -3604,5 +3612,6 @@
         private ToolStripSeparator toolStripSeparator15;
         private ToolStripButton btnCerrarSesion;
         private ToolStripSeparator toolStripSeparator16;
+        private ToolStripSeparator toolStripSeparator17;
     }
 }

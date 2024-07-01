@@ -93,8 +93,11 @@ namespace MindCare
             licenciaPsicologoBusqueda?.Invoke(this, licencia);
         }
 
+        public bool ordenCerrar {  get; set; }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            ordenCerrar = true;
             this.Close();
         }
     }

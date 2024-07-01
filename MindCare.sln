@@ -8,13 +8,31 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		MindCare|Any CPU = MindCare|Any CPU
+		MindCare|x64 = MindCare|x64
+		MindCareActualizado|Any CPU = MindCareActualizado|Any CPU
+		MindCareActualizado|x64 = MindCareActualizado|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{164108BE-E933-4E39-AD5B-D52674280C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{164108BE-E933-4E39-AD5B-D52674280C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.Debug|x64.ActiveCfg = Debug|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.Debug|x64.Build.0 = Debug|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCare|Any CPU.ActiveCfg = MindCare|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCare|Any CPU.Build.0 = MindCare|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCare|x64.ActiveCfg = MindCare|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCare|x64.Build.0 = MindCare|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCareActualizado|Any CPU.ActiveCfg = MindCareActualizado|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCareActualizado|Any CPU.Build.0 = MindCareActualizado|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCareActualizado|x64.ActiveCfg = MindCareActualizado|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.MindCareActualizado|x64.Build.0 = MindCareActualizado|x64
 		{164108BE-E933-4E39-AD5B-D52674280C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{164108BE-E933-4E39-AD5B-D52674280C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164108BE-E933-4E39-AD5B-D52674280C67}.Release|x64.ActiveCfg = Release|x64
+		{164108BE-E933-4E39-AD5B-D52674280C67}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

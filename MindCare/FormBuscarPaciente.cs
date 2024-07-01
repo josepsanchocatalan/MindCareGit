@@ -78,18 +78,19 @@ namespace MindCare
             }
         }
 
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            // Enviar el valor de la celda al formulario principal a través del evento correoPacienteBusqueda
             OnCorreoPacienteBusqueda(correoSeleccionado);
-            this.Close();
+            this.Hide();
         }
 
-        // Declarar un método para invocar el evento correoPacienteBusqueda
+
         protected virtual void OnCorreoPacienteBusqueda(string correo)
         {
             correoPacienteBusqueda?.Invoke(this, correo);
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

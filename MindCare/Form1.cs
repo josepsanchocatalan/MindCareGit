@@ -32,7 +32,7 @@ namespace MindCare
         //
 
         private Firebase.Database.FirebaseClient firebaseClient;
-        private FirebaseAuthProvider authProvider; 
+        private FirebaseAuthProvider authProvider;
 
         HashSet<string> subscribedChats = new HashSet<string>();
         private Dictionary<string, IDisposable> suscripciones = new Dictionary<string, IDisposable>();
@@ -305,33 +305,56 @@ namespace MindCare
 
             if (accionPacientes.Equals("Crear"))
             {
-                
+
                 if (accionPacOK == true)
                 {
                     await crearPaciente();
 
                     if (crearpaciente.Equals(true))
                     {
-                        await registrarPaciente(textBoxEmail.Text, textBoxDNI.Text, textBoxNombre.Text, textBoxApellidos.Text);
+                        await registrarPaciente(textBoxEmail.Text, crearContrasenya(), textBoxNombre.Text, textBoxApellidos.Text);
                         botonesInicioPaciente();
+                        limpiarCamposPacientesPaciente();
+                        limpiarLabelsPacientesPaciente();
                         accionPacientes = "";
                     }
-                } else if (accionPacOK == false)
+                }
+                else if (accionPacOK == false)
                 {
                     accionPacientes = "Crear";
                 }
-                
+
             }
             else if (accionPacientes.Equals("Modificar"))
             {
                 if (accionPacOK == true)
                 {
                     await ActualizarPaciente(textBoxDNI.Text, textBoxNombre.Text, textBoxApellidos.Text, textBoxEmail.Text, textBoxDireccion.Text, textBoxPoblacion.Text, textBoxProvincia.Text, textBoxPais.Text, int.Parse(textBoxEdad.Text), textBoxTelefono.Text, textBoxTelefono2.Text);
-                } else if (accionPacOK == false) 
+                }
+                else if (accionPacOK == false)
                 {
                     accionPacientes = "Modificar";
                 }
             }
+        }
+
+
+        private String crearContrasenya()
+        {
+            String contrasenya = "mc" + textBoxDNI.Text + "1";
+            return contrasenya;
+        }
+
+        private String crearContrasenyaPsico()
+        {
+            String contrasenya = "mc" + textBoxNIFPsicologo.Text + "1";
+            return contrasenya;
+        }
+
+        private String crearContrasenyaPsiqui()
+        {
+            String contrasenya = "mc" + textBoxNIFPsiquiatra.Text + "1";
+            return contrasenya;
         }
 
         //Boton crearpaciente
@@ -346,6 +369,8 @@ namespace MindCare
             btnLimpiarCamposPacientes.Enabled = true;
         }
 
+        bool bloqact = false;
+
         //Boton buscarpaciente
         private void btnBuscarPaciente_Click(object sender, EventArgs e)
         {
@@ -353,6 +378,19 @@ namespace MindCare
 
             buscar.correoPacienteBusqueda += FormBuscar_correoPacienteBusqueda;
             buscar.ShowDialog();
+
+            bloquearTextBoxPacientes();
+            textBoxDNI.Enabled = false;
+            btnCrearPaciente.Enabled = false;
+            btnModificarPaciente.Enabled = true;
+            btnGuardarPaciente.Enabled = false;
+            btnCancelarPaciente.Enabled = true;
+            btnEliminarPaciente.Enabled = false;
+            btnBuscarPaciente.Enabled = true;
+            btnLimpiarCamposPacientes.Enabled = true;
+            btnReportesPaciente.Enabled = true;
+            bloqact = false;
+
         }
 
         //Evento que le pasa el paciente seleccionado al formulario
@@ -361,28 +399,26 @@ namespace MindCare
             CorreoUsuarioSeleccionado = correo;
 
             MostrarDatosPaciente(CorreoUsuarioSeleccionado);
-            bloquearTextBoxPacientes();
 
-            btnCrearPaciente.Enabled = false;
-            btnModificarPaciente.Enabled = true;
-            btnGuardarPaciente.Enabled = true;
-            btnCancelarPaciente.Enabled = true;
-            btnEliminarPaciente.Enabled = false;
-            btnBuscarPaciente.Enabled = true;
-            btnLimpiarCamposPacientes.Enabled = true;
-            btnReportesPaciente.Enabled = true;
+            FormBuscarPaciente paciente = new FormBuscarPaciente();
+
+                
+
+
         }
 
         //Boton modificarpaciente
         private void btnModificarPaciente_Click(object sender, EventArgs e)
         {
             accionPacientes = "Modificar";
-            textBoxDNI.Enabled = false;
             btnModificarPaciente.Enabled = false;
             btnGuardarPaciente.Enabled = true;
             btnCancelarPaciente.Enabled = true;
             btnLimpiarCamposPacientes.Enabled = true;
             btnEliminarPaciente.Enabled = true;
+            desbloquearTextBoxPacientes();
+
+            textBoxDNI.Enabled = false;
         }
 
         //Boton eliminarpaciente
@@ -415,15 +451,15 @@ namespace MindCare
         {
             if (ValidarDNI(textBoxDNI.Text) == true)
             {
-                string profesionalCorreo = correoUsuarioActual;
+                //string profesionalCorreo = correoUsuarioActual;
 
-                var profesional = await ObtenerProfesionalPorCorreo(profesionalCorreo);
+                //var profesional = await ObtenerProfesionalPorCorreo(profesionalCorreo);
 
-                if (profesional == null)
-                {
-                    MessageBox.Show("Profesional no encontrado", "¡Nos hemos topado con una barricada!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
+                //if (profesional == null)
+                //{
+                //    MessageBox.Show("Profesional no encontrado", "¡Nos hemos topado con una barricada!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    return;
+                //}
 
                 var paciente = new pacientesPOJO
                 {
@@ -438,7 +474,7 @@ namespace MindCare
                     Edad = int.Parse(textBoxEdad.Text),
                     Telefono = textBoxTelefono.Text,
                     Telefono2 = textBoxTelefono2.Text,
-                    ProfesionalActual = profesional.NumeroLicencia
+                    ProfesionalActual = correoUsuarioActual
 
                 };
 
@@ -523,7 +559,8 @@ namespace MindCare
                     Pais = pais,
                     Edad = edad,
                     Telefono = telefono,
-                    Telefono2 = telefono2
+                    Telefono2 = telefono2,
+                    ProfesionalActual = correoUsuarioActual
                 };
 
                 await firebaseClient.Child("pacientes").Child(nif).PutAsync(nuevoPaciente);
@@ -689,6 +726,20 @@ namespace MindCare
 
                     formBuscar.correoPacienteBusqueda += FormBuscar_correoPacienteBusqueda;
                     formBuscar.ShowDialog();
+
+                    bloquearTextBoxPacientes();
+                    textBoxDNI.Enabled = false;
+                    btnCrearPaciente.Enabled = false;
+                    btnModificarPaciente.Enabled = true;
+                    btnGuardarPaciente.Enabled = false;
+                    btnCancelarPaciente.Enabled = true;
+                    btnEliminarPaciente.Enabled = false;
+                    btnBuscarPaciente.Enabled = true;
+                    btnLimpiarCamposPacientes.Enabled = true;
+                    btnReportesPaciente.Enabled = true;
+                    bloqact = false;
+
+
                 }
             }
             else if (clickedNode.Text.Equals("Historial de paciente"))
@@ -731,6 +782,17 @@ namespace MindCare
 
                     formBuscar.licenciaPsicologoBusqueda += FormBuscarPsicologo_licenciaPsicologoBusqueda;
                     formBuscar.ShowDialog();
+
+                    bloquearTextBoxPsicologo();
+                    btnCrearPsicologo.Enabled = false;
+                    btnModificarPsicologo.Enabled = true;
+                    btnGuardarPsicologo.Enabled = false;
+                    btnCancelarPsicologo.Enabled = true;
+                    btnEliminarPsicologo.Enabled = false;
+                    btnBuscarPsicologo.Enabled = true;
+                    btnLimpiarCamposPsicologo.Enabled = true;
+                    btnReportesPsicologo.Enabled = true;
+
                 }
             }
             else if (clickedNode.Text.Equals("Psiquiatras"))
@@ -899,6 +961,7 @@ namespace MindCare
             labelTelefono2Psiquiatra.Text = "";
             labelEspecialidadPsiquiatra.Text = "";
             labelEmailPsiquiatra.Text = "";
+            labelPrecioSesionPsiquiatra.Text = "";
         }
 
 
@@ -921,6 +984,7 @@ namespace MindCare
             textBoxPaisPsicologo.Text = "";
             textBoxTelefono1Psicologo.Text = "";
             textBoxTelefono2Psicologo.Text = "";
+            textBoxPrecioPsicologo.Text = "";
         }
 
         private void limpiarLabelsPsicologo()
@@ -939,6 +1003,7 @@ namespace MindCare
             labelPaisPsicologo.Text = "";
             labelTelefonoPsicologo.Text = "";
             labelTelefono2Psicologo.Text = "";
+            labelTarifaPsicologo.Text = "";
         }
 
         private void desbloquearTextBoxPsicologo()
@@ -958,10 +1023,12 @@ namespace MindCare
             textBoxTelefono2Psicologo.Enabled = true;
             textBoxEmailPsicologo.Enabled = true;
             textBoxPrecioPsicologo.Enabled = true;
+            textBoxObservacionesPsicologo.Enabled = true;
         }
 
         private void bloquearTextBoxPsicologo()
         {
+            textBoxLicenciaPsicologo.Enabled = false;
             textBoxNombrePsicologo.Enabled = false;
             textBoxNIFPsicologo.Enabled = false;
             textBoxApellidosPsicologo.Enabled = false;
@@ -977,6 +1044,7 @@ namespace MindCare
             textBoxTelefono2Psicologo.Enabled = false;
             textBoxEmailPsicologo.Enabled = false;
             textBoxPrecioPsicologo.Enabled = false;
+            textBoxObservacionesPsicologo.Enabled = false;
         }
 
         private void desbloquearTextBoxPsiquiatras()
@@ -1052,47 +1120,47 @@ namespace MindCare
         //Crear psicólogo
         private async Task CrearPsicologo()
         {
-                if (ValidarDNI(textBoxNIFPsicologo.Text))
+            if (ValidarDNI(textBoxNIFPsicologo.Text))
+            {
+                var psicologo = new PsicologosPOJO
                 {
-                    var psicologo = new PsicologosPOJO
-                    {
-                        NumeroLicencia = textBoxLicenciaPsicologo.Text,
-                        Nombre = textBoxNombrePsicologo.Text,
-                        Apellidos = textBoxApellidosPsicologo.Text,
-                        Edad = int.Parse(textBoxEdadPsicologo.Text),
-                        Direccion = textBoxDireccionPsicologo.Text,
-                        Poblacion = textBoxPoblacionPsicologo.Text,
-                        Provincia = textBoxProvinciaPsicologo.Text,
-                        Pais = textBoxPaisPsicologo.Text,
-                        NIF = textBoxNIFPsicologo.Text,
-                        Correo = textBoxEmailPsicologo.Text,
-                        Especialidad = textBoxEspecialidadPsicologo.Text,
-                        HorariosAtencion = textBoxObservacionesPsicologo.Text,
-                        Tarifas = int.Parse(textBoxPrecioPsicologo.Text),
-                        Telefono1 = textBoxTelefono1Psicologo.Text,
-                        Telefono2 = textBoxTelefono2Psicologo.Text,
-                        DireccionConsultorio = textBoxDirConsPsicologo.Text,
-                    };
+                    NumeroLicencia = textBoxLicenciaPsicologo.Text,
+                    Nombre = textBoxNombrePsicologo.Text,
+                    Apellidos = textBoxApellidosPsicologo.Text,
+                    Edad = int.Parse(textBoxEdadPsicologo.Text),
+                    Direccion = textBoxDireccionPsicologo.Text,
+                    Poblacion = textBoxPoblacionPsicologo.Text,
+                    Provincia = textBoxProvinciaPsicologo.Text,
+                    Pais = textBoxPaisPsicologo.Text,
+                    NIF = textBoxNIFPsicologo.Text,
+                    Correo = textBoxEmailPsicologo.Text,
+                    Especialidad = textBoxEspecialidadPsicologo.Text,
+                    HorariosAtencion = textBoxObservacionesPsicologo.Text,
+                    Tarifas = int.Parse(textBoxPrecioPsicologo.Text),
+                    Telefono1 = textBoxTelefono1Psicologo.Text,
+                    Telefono2 = textBoxTelefono2Psicologo.Text,
+                    DireccionConsultorio = textBoxDirConsPsicologo.Text,
+                };
 
-                    try
-                    {
-                        var result = await firebaseClient.Child("psicologos").PostAsync(psicologo);
-
-                        MessageBox.Show("Psicólogo creado con éxito. ID del nuevo nodo: " + result.Key, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        crearpsicologo = true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al crear el psicólogo: " + ex.Message, "¡Nos hemos topado con una barricada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        crearpsicologo = false;
-                    }
-                }
-                else
+                try
                 {
-                    labelNIFPsicologo.Text = "NIF incorrecto. Ej: 12345678X";
+                    var result = await firebaseClient.Child("psicologos").PostAsync(psicologo);
+
+                    MessageBox.Show("Psicólogo creado con éxito. ID del nuevo nodo: " + result.Key, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    crearpsicologo = true;
+
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al crear el psicólogo: " + ex.Message, "¡Nos hemos topado con una barricada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    crearpsicologo = false;
+                }
+            }
+            else
+            {
+                labelNIFPsicologo.Text = "NIF incorrecto. Ej: 12345678X";
+            }
         }
 
         //Registrar psicologo
@@ -1137,7 +1205,8 @@ namespace MindCare
                 {
 
                 }
-            } else
+            }
+            else
             {
                 labelNIFPsicologo.Text = "NIF incorrecto. Ej: 12345678X";
             }
@@ -1147,61 +1216,61 @@ namespace MindCare
         private async Task ActualizarPsicologo(string nlicencia, string nombre, string apellidos, int edad, string direccion, string poblacion, string provincia, string pais, string nif, string correo, string especialidad,
             string horariosatencion, string tarifas, string telefono1, string telefono2, string direccionconsultorio)
         {
-                if (ValidarDNI(textBoxNIFPsicologo.Text) == true)
+            if (ValidarDNI(textBoxNIFPsicologo.Text) == true)
+            {
+                try
                 {
-                    try
+                    var nuevoPsicololgo = new PsicologosPOJO
                     {
-                        var nuevoPsicololgo = new PsicologosPOJO
-                        {
-                            NumeroLicencia = nlicencia,
-                            Nombre = nombre,
-                            Apellidos = apellidos,
-                            Edad = edad,
-                            Direccion = direccion,
-                            Poblacion = poblacion,
-                            Provincia = provincia,
-                            Pais = pais,
-                            NIF = nif,
-                            Correo = correo,
-                            Especialidad = especialidad,
-                            HorariosAtencion = horariosatencion,
-                            Tarifas = int.Parse(tarifas),
-                            Telefono1 = telefono1,
-                            Telefono2 = telefono2,
-                            DireccionConsultorio = direccionconsultorio
-                        };
+                        NumeroLicencia = nlicencia,
+                        Nombre = nombre,
+                        Apellidos = apellidos,
+                        Edad = edad,
+                        Direccion = direccion,
+                        Poblacion = poblacion,
+                        Provincia = provincia,
+                        Pais = pais,
+                        NIF = nif,
+                        Correo = correo,
+                        Especialidad = especialidad,
+                        HorariosAtencion = horariosatencion,
+                        Tarifas = int.Parse(tarifas),
+                        Telefono1 = telefono1,
+                        Telefono2 = telefono2,
+                        DireccionConsultorio = direccionconsultorio
+                    };
 
-                        await firebaseClient.Child("psicologos").Child(nif).PutAsync(nuevoPsicololgo);
+                    await firebaseClient.Child("psicologos").Child(nif).PutAsync(nuevoPsicololgo);
 
-                        var usuarioSnapshot = await firebaseClient.Child("usuarios").OrderBy("NIF").EqualTo(nif).OnceAsync<UsuariosPOJO>();
-                        var usuario = usuarioSnapshot.FirstOrDefault();
+                    var usuarioSnapshot = await firebaseClient.Child("usuarios").OrderBy("NIF").EqualTo(nif).OnceAsync<UsuariosPOJO>();
+                    var usuario = usuarioSnapshot.FirstOrDefault();
 
-                        if (usuario != null)
-                        {
-                            usuario.Object.Nombre = nombre;
-                            usuario.Object.Apellidos = apellidos;
-                            usuario.Object.Correo = correo;
-                            usuario.Object.Rol = "Psicólogo";
-                            usuario.Object.Rol = "Psicólogo";
-
-                            await firebaseClient.Child("usuarios").Child(usuario.Key).PutAsync(usuario.Object);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el usuario correspondiente al paciente.");
-                        }
-
-                        MessageBox.Show("Paciente actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
+                    if (usuario != null)
                     {
-                        MessageBox.Show("Error al actualizar el paciente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        usuario.Object.Nombre = nombre;
+                        usuario.Object.Apellidos = apellidos;
+                        usuario.Object.Correo = correo;
+                        usuario.Object.Rol = "Psicólogo";
+                        usuario.Object.Rol = "Psicólogo";
+
+                        await firebaseClient.Child("usuarios").Child(usuario.Key).PutAsync(usuario.Object);
                     }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el usuario correspondiente al paciente.");
+                    }
+
+                    MessageBox.Show("Paciente actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (Exception ex)
                 {
-                    labelNIFPsicologo.Text = "NIF inválido. Ej: 12345678X";
+                    MessageBox.Show("Error al actualizar el paciente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                labelNIFPsicologo.Text = "NIF inválido. Ej: 12345678X";
+            }
         }
 
         //Boton crearPsicologo
@@ -1221,6 +1290,7 @@ namespace MindCare
         {
             accionPsicologos = "Modificar";
             textBoxNIFPsicologo.Enabled = false;
+            textBoxLicenciaPsicologo.Enabled = false;
             btnModificarPsicologo.Enabled = false;
             btnGuardarPsicologo.Enabled = true;
             btnCancelarPsicologo.Enabled = true;
@@ -1233,27 +1303,28 @@ namespace MindCare
         {
             validarPsicologo();
 
-                if (accionPsicologos.Equals("Crear"))
+            if (accionPsicologos.Equals("Crear"))
+            {
+                if (accionPsicoOK == true)
                 {
-                    if (accionPsicoOK == true) { 
-                    
-                        await CrearPsicologo();
 
-                        if (crearpsicologo.Equals(true))
-                        {
-                            await registrarPsicologo(textBoxEmailPsicologo.Text, textBoxNIFPsicologo.Text, textBoxNombrePsicologo.Text, textBoxApellidosPsicologo.Text);
-                            botonesInicioPsicologo();
-                            limpiarLabelsPsicologo();
-                            limpiarCamposPsicologos();
-                        }
-                    } 
-                    else 
+                    await CrearPsicologo();
+
+                    if (crearpsicologo.Equals(true))
                     {
-                    accionPsicologos = "Crear";
+                        await registrarPsicologo(textBoxEmailPsicologo.Text, crearContrasenyaPsico(), textBoxNombrePsicologo.Text, textBoxApellidosPsicologo.Text);
+                        botonesInicioPsicologo();
+                        limpiarLabelsPsicologo();
+                        limpiarCamposPsicologos();
                     }
                 }
-                else if (accionPsicologos.Equals("Modificar"))
+                else
                 {
+                    accionPsicologos = "Crear";
+                }
+            }
+            else if (accionPsicologos.Equals("Modificar"))
+            {
                 if (accionPsicoOK == true)
                 {
                     await ActualizarPsicologo(textBoxLicenciaPsicologo.Text, textBoxNombrePsicologo.Text, textBoxApellidosPsicologo.Text, int.Parse(textBoxEdadPsicologo.Text), textBoxDireccionPsicologo.Text, textBoxPoblacionPsicologo.Text, textBoxProvinciaPsicologo.Text, textBoxPaisPsicologo.Text, textBoxNIFPsicologo.Text, textBoxEmailPsicologo.Text, textBoxEspecialidadPsicologo.Text, textBoxObservacionesPsicologo.Text, textBoxPrecioPsicologo.Text, textBoxTelefono1Psicologo.Text, textBoxTelefono2Psicologo.Text, textBoxDirConsPsicologo.Text);
@@ -1262,7 +1333,7 @@ namespace MindCare
                 {
                     accionPsicologos = "Modificar";
                 }
-                }
+            }
         }
 
         //Boton eliminarPsicologo
@@ -1287,7 +1358,7 @@ namespace MindCare
             botonesInicioPsicologo();
             limpiarLabelsPsicologo();
             limpiarCamposPsicologos();
-            textBoxNIFPsicologo.Enabled = false;
+            textBoxLicenciaPsicologo.Enabled = false;
         }
 
         private async Task eliminarPsicologo(string licencia)
@@ -1336,14 +1407,17 @@ namespace MindCare
             buscar.licenciaPsicologoBusqueda += FormBuscarPsicologo_licenciaPsicologoBusqueda;
             buscar.ShowDialog();
 
+            bloquearTextBoxPsicologo();
             btnCrearPsicologo.Enabled = false;
             btnModificarPsicologo.Enabled = true;
             btnGuardarPsicologo.Enabled = false;
-            btnCancelarPsicologo.Enabled = false;
+            btnCancelarPsicologo.Enabled = true;
             btnEliminarPsicologo.Enabled = false;
             btnBuscarPsicologo.Enabled = true;
             btnLimpiarCamposPsicologo.Enabled = true;
             btnReportesPsicologo.Enabled = true;
+
+
         }
 
         private void FormBuscarPsicologo_licenciaPsicologoBusqueda(object? sender, string licencia)
@@ -1574,7 +1648,7 @@ namespace MindCare
         {
             if (string.IsNullOrEmpty(currentChatId))
             {
-                MessageBox.Show("No chat selected.");
+                MessageBox.Show("No se ha seleccionado ningún chat.");
                 return;
             }
 
@@ -1585,11 +1659,11 @@ namespace MindCare
             {
                 await firebaseClient.Child("chats").Child(chatId).Child("messages").PostAsync(message);
                 txtMessage.Clear();
-                Console.WriteLine("Message sent successfully.");
+                Console.WriteLine("Mensaje enviado correctamente.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error sending message: {ex.Message}");
+                Console.WriteLine($"Error enviando mensaje: {ex.Message}");
             }
         }
 
@@ -1817,7 +1891,7 @@ namespace MindCare
 
                     if (filtroNIF == null || pacienteData["NIF"].ToString() == filtroNIF)
                     {
-                        dataGridViewHistorialPaciente.Rows.Add(pacienteData["NIF"], pacienteData["LicenciaProfesionalActual"], pacienteData["ConsentimientoInformativo"], pacienteData["DuracionSesion"], pacienteData["MotivoConsulta"], pacienteData["ObersvacionesTerapeuta"], pacienteData["ResumenSesion"], pacienteData["TomaMedicamentos"]);
+                        dataGridViewHistorialPaciente.Rows.Add(pacienteData["LicenciaProfesionalActual"], pacienteData["NIF"], pacienteData["MotivoConsulta"], pacienteData["TomaMedicamentos"], pacienteData["ObersvacionesTerapeuta"], pacienteData["DuracionSesion"], pacienteData["ResumenSesion"], pacienteData["ConsentimientoInformativo"]);
                     }
                 }
             }
@@ -1830,6 +1904,7 @@ namespace MindCare
         private void btnModificarHistorialPaciente_Click(object sender, EventArgs e)
         {
             ModificarHistorialSesionPaciente();
+            CargarDatos();
         }
 
         private async void ModificarHistorialSesionPaciente()
@@ -1838,7 +1913,7 @@ namespace MindCare
             {
                 DataGridViewRow row = dataGridViewHistorialPaciente.SelectedRows[0];
 
-                string nif = row.Cells["NIF"].Value.ToString(); 
+                string nif = row.Cells["NIF"].Value.ToString();
                 string licencia = row.Cells["LicenciaProfesionalActual"].Value.ToString();
                 string motivo = row.Cells["MotivoConsulta"].Value.ToString();
                 string medicamentos = row.Cells["TomaMedicamentos"].Value.ToString();
@@ -1880,6 +1955,7 @@ namespace MindCare
                     await firebaseClient.Child("historialPacientes").Child(nif).DeleteAsync();
 
                     MessageBox.Show("Registro eliminado exitosamente de la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatos();
                 }
                 catch (Exception ex)
                 {
@@ -1928,8 +2004,9 @@ namespace MindCare
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             inicioSesion inicio = new inicioSesion();
-            inicio.ShowDialog();
             this.Hide();
+            inicio.ShowDialog();
+            
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -1943,7 +2020,7 @@ namespace MindCare
         //Crear psiquiatra
         private async Task CrearPsiquiatra()
         {
-            if (ValidarDNI(textBoxNIFPsicologo.Text))
+            if (ValidarDNI(textBoxNIFPsiquiatra.Text))
             {
                 var psiquiatra = new PsiquiatrasPOJO
                 {
@@ -1967,7 +2044,7 @@ namespace MindCare
 
                 try
                 {
-                    var result = await firebaseClient.Child("psicologos").PostAsync(psiquiatra);
+                    var result = await firebaseClient.Child("psiquiatras").PostAsync(psiquiatra);
 
                     MessageBox.Show("Psiquiatra creado con éxito. ID del nuevo nodo: " + result.Key, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1979,7 +2056,8 @@ namespace MindCare
                     MessageBox.Show("Error al crear el psiquiatra: " + ex.Message, "¡Nos hemos topado con una barricada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     crearpsiquiatra = false;
                 }
-            } else
+            }
+            else
             {
                 labelNIFPsiquiatra.Text = "NIF incorrecto. Ej: 12345678X";
             }
@@ -2027,7 +2105,8 @@ namespace MindCare
                 {
 
                 }
-            } else
+            }
+            else
             {
                 labelNIFPsiquiatra.Text = "NIF incorrecto. Ej: 12345678X";
             }
@@ -2174,15 +2253,17 @@ namespace MindCare
 
         private async void btnGuardarPsiquiatraToolStrip_Click(object sender, EventArgs e)
         {
+            validarPsiquiatra();
+
             if (accionPsiquiatras.Equals("Crear"))
             {
-                if (!string.IsNullOrEmpty(textBoxNIFPsiquiatra.Text))
+                if (accionPsiquiOK == true)
                 {
                     await CrearPsiquiatra();
 
                     if (crearpsiquiatra.Equals(true))
                     {
-                        await registrarPsiquiatra(textBoxEmailPsiquiatra.Text, textBoxNIFPsiquiatra.Text, textBoxNombrePsiquiatra.Text, textBoxApellidosPsiquiatra.Text);
+                        await registrarPsiquiatra(textBoxEmailPsiquiatra.Text, crearContrasenyaPsiqui(), textBoxNombrePsiquiatra.Text, textBoxApellidosPsiquiatra.Text); ;
                         botonesInicioPsiquiatra();
                         limpiarLabelsPsiquiatra();
                         limpiarCamposPsiquiatras();
@@ -2190,12 +2271,19 @@ namespace MindCare
                 }
                 else
                 {
-                    labelNIFPsiquiatra.Text = "El NIF no puede estar vacío";
+                    accionPsiquiatras = "Crear";
                 }
             }
             else if (accionPsiquiatras.Equals("Modificar"))
             {
-                await ActualizarPsiquiatra(textBoxLicenciaPsiquiatra.Text, textBoxNombrePsiquiatra.Text, textBoxApellidosPsiquiatra.Text, int.Parse(textBoxEdadPsiquiatra.Text), textBoxDireccionPsiquiatra.Text, textBoxPoblacionPsiquiatra.Text, textBoxProvinciaPsiquiatra.Text, textBoxPaisPsiquiatra.Text, textBoxNIFPsiquiatra.Text, textBoxEmailPsiquiatra.Text, textBoxEspecialidadPsiquiatra.Text, textBoxObservacionesPsiquiatra.Text, textBoxPrecioSesionPsiquiatra.Text, textBoxTelefono1Psiquiatra.Text, textBoxTelefono2Psiquiatra.Text, textBoxDireccionConsultorioPsiquiatra.Text);
+                if (accionPsiquiOK == true)
+                {
+                    await ActualizarPsiquiatra(textBoxLicenciaPsiquiatra.Text, textBoxNombrePsiquiatra.Text, textBoxApellidosPsiquiatra.Text, int.Parse(textBoxEdadPsiquiatra.Text), textBoxDireccionPsiquiatra.Text, textBoxPoblacionPsiquiatra.Text, textBoxProvinciaPsiquiatra.Text, textBoxPaisPsiquiatra.Text, textBoxNIFPsiquiatra.Text, textBoxEmailPsiquiatra.Text, textBoxEspecialidadPsiquiatra.Text, textBoxObservacionesPsiquiatra.Text, textBoxPrecioSesionPsiquiatra.Text, textBoxTelefono1Psiquiatra.Text, textBoxTelefono2Psiquiatra.Text, textBoxDireccionConsultorioPsiquiatra.Text);
+
+                } else
+                {
+                    accionPsiquiatras = "Modificar";
+                }
             }
         }
 
@@ -2204,7 +2292,7 @@ namespace MindCare
             botonesInicioPsiquiatra();
             limpiarLabelsPsiquiatra();
             limpiarCamposPsiquiatras();
-            textBoxNIFPsiquiatra.Enabled = false;
+            textBoxLicenciaPsiquiatra.Enabled = false;
         }
 
         private void btnBuscarPsiquiatraToolStrip_Click(object sender, EventArgs e)
@@ -2216,7 +2304,7 @@ namespace MindCare
             btnCrearPsiquiatraToolStrip.Enabled = false;
             btnModificarPsiquiatraToolStrip.Enabled = true;
             btnGuardarPsiquiatraToolStrip.Enabled = false;
-            btnCancelarPsiquiatraToolStrip.Enabled = false;
+            btnCancelarPsiquiatraToolStrip.Enabled = true;
             btnEliminarPsiquiatra.Enabled = false;
             btnBuscarPsiquiatraToolStrip.Enabled = true;
             btnLimpiarCamposPsiquiatra.Enabled = true;
@@ -2321,7 +2409,7 @@ namespace MindCare
         bool edadPacOK = false;
         bool tel1PacOK = false;
         bool accionPacOK = false;
-        
+
 
         private void validarPaciente()
         {
@@ -2440,6 +2528,15 @@ namespace MindCare
             {
                 labelCorreoPaciente.Text = "";
             }
+
+            if (edadPacOK == false)
+            {
+                labelEdadPaciente.Text = "Edad válida de 1 a 100 años";
+            }
+            else
+            {
+                labelEdadPaciente.Text = "";
+            }
         }
 
         //Validar psicologo
@@ -2529,11 +2626,11 @@ namespace MindCare
 
             if (nombrePsicoOK == false)
             {
-                labelNIFPsicologo.Text = "Longitud entre 1 y 30.";
+                labelNombrePsicologo.Text = "Longitud entre 1 y 30.";
             }
             else
             {
-                labelNIFPsicologo.Text = "";
+                labelNombrePsicologo.Text = "";
             }
 
             if (apellidosPsicoOK == false)
@@ -2554,6 +2651,15 @@ namespace MindCare
                 labelDireccionPsicologo.Text = "";
             }
 
+            if (pobPsicoOK == false)
+            {
+                labelPoblacionPsicologo.Text = "Longitud entre 1 y 20";
+            } 
+            else
+            {
+                labelPoblacionPsicologo.Text = "";
+            }
+
             if (provPsicoOK == false)
             {
                 labelProvinciaPsicologo.Text = "Longitud entre 1 y 20.";
@@ -2570,6 +2676,15 @@ namespace MindCare
             else
             {
                 labelPaisPsicologo.Text = "";
+            }
+
+            if (edadPsicoOK == false)
+            {
+                labelEdadPsicologo.Text = "Edad válida de 1 a 100 años";
+            }
+            else
+            {
+                labelEdadPsicologo.Text = "";
             }
 
             if (tel1PsicoOK == false)
@@ -2611,7 +2726,7 @@ namespace MindCare
             if (tarifasPsicoOK == false)
             {
                 labelTarifaPsicologo.Text = "Longitud inválida";
-            } 
+            }
             else
             {
                 labelTarifaPsicologo.Text = "";
@@ -2659,22 +2774,22 @@ namespace MindCare
 
             error = "Se han encontrado los siguientes errores:";
 
-            nLicenciaOK = ValidarLongitud(numLicenciaPsiquiatra, 7, 9, "La longitud del NIF debe ser de 7 a 9 caracteres.");
-            nifPsicoOK = ValidarLongitud(nifPsiquiatrao, 9, 9, "La longitud del NIF debe ser de 9 caracteres.") && ValidarDNI(nifPsiquiatrao);
-            nombrePsicoOK = ValidarLongitud(nombrePsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
-            apellidosPsicoOK = ValidarLongitud(apellidosPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
-            emailPsicoOK = ValidarLongitud(emailPsiquiatra, 10, 40, "La longitud del email debe ser mayor que 5 y menor que 41.") && ComprobarFormatoEmail(emailPsiquiatra);
-            dirPsicoOK = ValidarLongitud(direccionPsiquiatra, 1, 50, "La longitud de la dirección debe ser mayor que 1 y menor que 51.");
-            pobPsicoOK = ValidarLongitud(poblacionPsiquiatra, 1, 20, "La longitud de la población debe ser mayor que 1 y menor que 21.");
-            provPsicoOK = ValidarLongitud(provinciaPsiquiatra, 1, 20, "La longitud de la provincia debe ser mayor que 1 y menor que 21.");
-            paisPsicoOK = ValidarLongitud(paisPsiquiatra, 1, 20, "La longitud del pais debe ser mayor que 1 y menor que 21");
-            edadPsicoOK = ValidarLongitud(edadPsiquiatra, 1, 3, "La edad debe ser de 0 a 100");
-            tel1PsicoOK = ValidarNumero(telefono1, 9, "La longitud del numero debe ser de 9 digitos");
-            especPsicoOK = ValidarLongitud(especialidadPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
-            dirConsPsicoOK = ValidarLongitud(dirConsPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
-            tarifasPsicoOK = ValidarLongitud(tarifaPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
+            nLicenciaPsiquiOK = ValidarLongitud(numLicenciaPsiquiatra, 7, 9, "La longitud del NIF debe ser de 7 a 9 caracteres.");
+            nifPsiquiOK = ValidarLongitud(nifPsiquiatrao, 9, 9, "La longitud del NIF debe ser de 9 caracteres.") && ValidarDNI(nifPsiquiatrao);
+            nombrePsiquiOK = ValidarLongitud(nombrePsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
+            apellidosPsiquiOK = ValidarLongitud(apellidosPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
+            emailPsiquiOK = ValidarLongitud(emailPsiquiatra, 10, 40, "La longitud del email debe ser mayor que 5 y menor que 41.") && ComprobarFormatoEmail(emailPsiquiatra);
+            dirPsiquiOK = ValidarLongitud(direccionPsiquiatra, 1, 50, "La longitud de la dirección debe ser mayor que 1 y menor que 51.");
+            pobPsiquiOK = ValidarLongitud(poblacionPsiquiatra, 1, 20, "La longitud de la población debe ser mayor que 1 y menor que 21.");
+            provPsiquiOK = ValidarLongitud(provinciaPsiquiatra, 1, 20, "La longitud de la provincia debe ser mayor que 1 y menor que 21.");
+            paisPsiquiOK = ValidarLongitud(paisPsiquiatra, 1, 20, "La longitud del pais debe ser mayor que 1 y menor que 21");
+            edadPsiquiOK = ValidarLongitud(edadPsiquiatra, 1, 3, "La edad debe ser de 0 a 100");
+            tel1PsiquiOK = ValidarNumero(telefono1, 9, "La longitud del numero debe ser de 9 digitos");
+            especPsiquiOK = ValidarLongitud(especialidadPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
+            dirConsPsiquiOK = ValidarLongitud(dirConsPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
+            tarifasPsiquiOK = ValidarLongitud(tarifaPsiquiatra, 1, 30, "La longitud del nombre debe ser mayor que 1 y menor que 31.");
 
-            if (nLicenciaOK && nifPsicoOK && nombrePsicoOK && apellidosPsicoOK && emailPsicoOK && dirPsicoOK && pobPsicoOK && provPsicoOK && paisPsicoOK && edadPsicoOK && tel1PsicoOK && especPsicoOK && dirConsPsicoOK && tarifasPsicoOK)
+            if (nLicenciaPsiquiOK && nifPsiquiOK && nombrePsiquiOK && apellidosPsiquiOK && emailPsiquiOK && dirPsiquiOK && pobPsiquiOK && provPsiquiOK && paisPsiquiOK && edadPsiquiOK && tel1PsiquiOK && especPsiquiOK && dirConsPsiquiOK && tarifasPsiquiOK)
             {
                 limpiarLabelsPsiquiatra();
                 accionPsiquiOK = true;
@@ -2684,7 +2799,7 @@ namespace MindCare
                 accionPsiquiOK = false;
             }
 
-            if (nLicenciaOK == false)
+            if (nLicenciaPsiquiOK == false)
             {
                 labelLicenciaPsiquiatra.Text = "Longitud entre 7 y 9 caracteres";
             }
@@ -2693,7 +2808,7 @@ namespace MindCare
                 labelLicenciaPsiquiatra.Text = "";
             }
 
-            if (nifPsicoOK == false)
+            if (nifPsiquiOK == false)
             {
                 labelNIFPsiquiatra.Text = "Ej: 12345678X.";
             }
@@ -2729,6 +2844,15 @@ namespace MindCare
                 labelDireccionPsiquiatra.Text = "";
             }
 
+            if (pobPsiquiOK == false)
+            {
+                labelPoblacionPsiquiatra.Text = "Longitud entre 1 y 20";
+            } 
+            else
+            {
+                labelPoblacionPsiquiatra.Text = "";
+            }
+
             if (provPsiquiOK == false)
             {
                 labelProvinciaPsiquiatra.Text = "Longitud entre 1 y 20.";
@@ -2756,7 +2880,7 @@ namespace MindCare
                 labelTelefono1Psiquiatra.Text = "";
             }
 
-            if (emailPsicoOK == false)
+            if (emailPsiquiOK == false)
             {
                 labelEmailPsiquiatra.Text = "Formato: ejemplo@gmail.com";
             }
@@ -2791,6 +2915,17 @@ namespace MindCare
             {
                 labelPrecioSesionPsiquiatra.Text = "";
             }
+
+            if (edadPsiquiOK == false)
+            {
+                labelEdadPsiquiatra.Text = "Edad válida de 1 a 100 años";
+            } 
+            else
+            {
+                labelEdadPsiquiatra.Text = "";
+            }
+
+
 
         }
 
@@ -2852,8 +2987,24 @@ namespace MindCare
 
 
 
+        private void btnLimpiarCamposPsicologo_Click(object sender, EventArgs e)
+        {
+            limpiarLabelsPsicologo();
+            limpiarCamposPsicologos();
 
+        }
 
+        private void btnLimpiarCamposPacientes_Click(object sender, EventArgs e)
+        {
+            limpiarLabelsPacientesPaciente();
+            limpiarCamposPacientesPaciente();
+        }
+
+        private void btnLimpiarCamposPsiquiatra_Click(object sender, EventArgs e)
+        {
+            limpiarLabelsPsiquiatra();
+            limpiarCamposPsiquiatras();
+        }
     }
 }
 
