@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#4682b4"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <!-- Contenedor para el botón "Citas" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/informacion"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"/>
+
+            <Button
+                android:id="@+id/btnPacientesActuales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#4682b4"
+                android:onClick="onButtonPacientesActuales"
+                android:text="Citas"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Contenedor para el botón "Perfil" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/perfil"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"/>
+
+            <Button
+                android:id="@+id/btnPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#4682b4"
+                android:onClick="onPerfilButtonClick"
+                android:text="Perfil"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Contenedor para el botón "Chat" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/burbujachat"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"/>
+
+            <Button
+                android:id="@+id/btnChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#4682b4"
+                android:onClick="onChatButtonClick"
+                android:text="Chat"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

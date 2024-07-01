@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#4682b4"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        android:layout_alignParentTop="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre y Apellidos"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correo Electrónico"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edad"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="País"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Población"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewProvince"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Provincia"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewProfession"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profesional Actual"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewNIF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIF"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewPhone1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono 1"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/textViewPhone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Teléfono 2"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:id="@+id/moreInfoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewMoreInfoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Más Información"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewHorarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Horarios"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewTarifa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tarifa"
+                    android:textSize="16sp"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/textViewDirCons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección consultorio"
+                    android:textSize="16sp"
+                    android:paddingBottom="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

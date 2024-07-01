@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre:"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apellidos:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Edad del paciente"
+                android:inputType="number"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NIF:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextNIF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NIF del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Dirección del paciente"
+                android:inputType="textPostalAddress"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="País:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextPais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="País del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Población:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextPoblacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Población del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Provincia:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextProvincia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Provincia del paciente"
+                android:inputType="text"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono del paciente"
+                android:inputType="phone"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono 2:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/editTextTelefono2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Segundo teléfono del paciente"
+                android:inputType="phone"
+                android:text=""
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profesional Actual:"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/textViewProfesional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="admin@gmail.com" />
+
+            <Button
+                android:id="@+id/btnGuardarPaciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#4682b4"
+                android:onClick="btnSavePaciente"
+                android:text="Guardar Paciente"
+                android:textColor="#FFFFFF"
+                tools:ignore="TextContrastCheck" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
